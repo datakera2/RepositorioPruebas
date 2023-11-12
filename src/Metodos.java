@@ -10,6 +10,8 @@ public class Metodos {
     private static int saldoIngreso;
     private static int[] gastosAño = new int[6];
     private static int[] ingresosAño = new int[6];
+    private static int elTotalIngresos;
+    private static int elTotalGastos;
 
     public static void showMenu() {
         Scanner input = new Scanner(System.in);
@@ -27,6 +29,9 @@ public class Metodos {
                     break;
                 case 2:
                     funcionIngreso();
+                    break;
+                case 3:
+                    verGananciasAño();
                     break;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
@@ -135,10 +140,10 @@ public class Metodos {
 
     public static void verTotalGasto(){
 
-        int elTotal = totalGastoAño();
+         elTotalGastos = totalGastoAño();
 
     
-        System.out.println("Tu total gastado en el año es" + " " + elTotal);
+        System.out.println("Tu total gastado en el año es" + " " + elTotalGastos);
 
     }
 
@@ -177,10 +182,23 @@ public class Metodos {
 
     public static void verTotalIngresosAño(){
 
-        int elTotal = saldoIngresosAño();
+         elTotalIngresos = saldoIngresosAño();
 
-        System.out.println("Tus ingreso total del años es de" + " " + elTotal);
+        System.out.println("Tus ingreso total del años es de" + " " + elTotalIngresos);
 
+    }
+
+    public static int ganaciasAño(int elTotalGastos, int elTotalIngresos){
+
+        int totalGanancias = elTotalIngresos - elTotalGastos;
+        return totalGanancias;
+    }
+
+
+    public static void verGananciasAño(){
+
+        int gananciasMostradas = ganaciasAño(elTotalGastos, elTotalIngresos);
+        System.out.println("Tus ganancias en el año son:" + " " + gananciasMostradas);
     }
 
 
